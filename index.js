@@ -1,24 +1,9 @@
 #!/usr/bin/env node
 
-import _ from 'lodash';
 import readlineSync from 'readline-sync';
+import { getPlayerChoice, getComputerChoice } from './src/choices.js';
 
 const figures = ['rock', 'paper', 'scissors'];
-
-const getPlayerChoice = () => {
-  const index = readlineSync.keyInSelect(figures, 'Choose your figure: ');
-  const playerChoice = figures[index];
-  console.log(`Your choice: ${index + 1}`);
-  console.log(`You chose: ${playerChoice}`);
-  return playerChoice;
-};
-
-const getComputerChoice = () => {
-  const randomNumber = _.random(0, 2);
-  const computerChoice = figures[randomNumber];
-  console.log(`Computer chose: ${computerChoice}`);
-  return computerChoice;
-};
 
 const makeVictory = (results, playerChoice, computerChoice) => {
   console.log(`You win! ${playerChoice} breaks ${computerChoice}.`);
@@ -31,8 +16,8 @@ const makeLose = (results, playerChoice, computerChoice) => {
 };
 
 const startRound = (results) => {
-  const playerChoice = getPlayerChoice();
-  const computerChoice = getComputerChoice();
+  const playerChoice = getPlayerChoice(figures);
+  const computerChoice = getComputerChoice(figures);
 
   if (playerChoice === computerChoice) {
     console.log('It was a draw dude');
@@ -50,7 +35,6 @@ const startRound = (results) => {
         break;
 
       default:
-        console.log('Error?');
         break;
     }
   }
