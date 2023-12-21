@@ -2,6 +2,7 @@
 
 import readlineSync from 'readline-sync';
 import { getPlayerChoice, getComputerChoice } from './src/choices.js';
+import { launchMenu, launchCredits } from './src/menu.js';
 
 const figures = ['rock', 'paper', 'scissors'];
 
@@ -73,18 +74,6 @@ const startRound = (results) => {
 const getArraySum = (array) => {
   const sum = array.reduce((temp, x) => temp + x, 0);
   return sum;
-};
-
-const launchMenu = () => {
-  const menuItems = ['Start Game', 'Credits', 'Exit'];
-  const playerChoice = readlineSync.keyInSelect(menuItems) + 1;
-  return playerChoice;
-};
-
-const launchCredits = () => {
-  console.log('Original Story/Planning/Game Design --- Hideo Kojima');
-  console.log('Original Idea --- SaulBadman');
-  console.log('Big Boss --- The Man Who Sold The World');
 };
 
 const launchGame = () => {
