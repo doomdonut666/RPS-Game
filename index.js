@@ -3,7 +3,7 @@
 import _ from 'lodash';
 import readlineSync from 'readline-sync';
 
-const figures = ['rock', 'scissors', 'paper'];
+const figures = ['rock', 'paper', 'scissors'];
 
 const getPlayerChoice = () => {
   const index = readlineSync.keyInSelect(figures, 'Choose your figure: ');
@@ -50,37 +50,38 @@ const startRound = (results) => {
         break;
 
       default:
+        console.log('Error?');
         break;
     }
+  }
 
-    if (playerChoice === 'scissors') {
-      switch (computerChoice) {
-        case 'paper':
-          makeVictory(results, playerChoice, computerChoice);
-          break;
+  if (playerChoice === 'scissors') {
+    switch (computerChoice) {
+      case 'paper':
+        makeVictory(results, playerChoice, computerChoice);
+        break;
 
-        case 'rock':
-          makeLose(results, playerChoice, computerChoice);
-          break;
+      case 'rock':
+        makeLose(results, playerChoice, computerChoice);
+        break;
 
-        default:
-          break;
-      }
+      default:
+        break;
     }
+  }
 
-    if (playerChoice === 'paper') {
-      switch (computerChoice) {
-        case 'rock':
-          makeVictory(results, playerChoice, computerChoice);
-          break;
+  if (playerChoice === 'paper') {
+    switch (computerChoice) {
+      case 'rock':
+        makeVictory(results, playerChoice, computerChoice);
+        break;
 
-        case 'scissors':
-          makeLose(results, playerChoice, computerChoice);
-          break;
+      case 'scissors':
+        makeLose(results, playerChoice, computerChoice);
+        break;
 
-        default:
-          break;
-      }
+      default:
+        break;
     }
   }
 };
